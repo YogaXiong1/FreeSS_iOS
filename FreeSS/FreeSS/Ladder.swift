@@ -13,39 +13,19 @@ struct Ladder: CustomStringConvertible {
     let ip: String
     let port: String
     let password: String
-    let encryptType: String
-//    let QRCodeURL: String
+    let encryption: String
+    let QRCodeURL: String
     
-    init(ip: String, port: String, password: String, encryptType: String) {
+    init(ip: String, port: String, password: String, encryption: String, QRCodeURL: String) {
         self.ip = ip
         self.port = port
         self.password = password
-        self.encryptType = encryptType
+        self.encryption = encryption
+        self.QRCodeURL = QRCodeURL
     }
     
     var description: String {
-        return "ip: \(ip)" + "\n" + "port: \(port)" + "\n" + "password: \(password)" + "\n" + "encryptType: \(encryptType)" + "\n"
+        return "ip: \(ip)" + "\n" + "port: \(port)" + "\n" + "password: \(password)" + "\n" + "encryption: \(encryption)" + "\n" + "QRCodeURL: \(QRCodeURL)" + "\n"
     }
     
 }
-
-//class A {
-//    let manager = NEVPNManager.shared()
-//    func a() {
-//        manager.loadFromPreferences { (e) in
-//            if e != nil {
-//                let p = NEVPNProtocolIPSec()
-//                p.username = ""
-//                p.passwordReference = ""
-//                p.serverAddress = ""
-//                p.authenticationMethod = ""
-//                p.sharedSecretReference = ""
-//                p.localIdentifier = ""
-//                p.remoteIdentifier = ""
-//                p.useExtendedAuthentication = false
-//                p.disconnectOnSleep = false
-//            }
-//        }
-//    }
-//    
-//}

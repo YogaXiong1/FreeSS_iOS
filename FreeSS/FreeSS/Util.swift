@@ -8,7 +8,41 @@
 
 import Foundation
 
-private let urlSting = "http://abc.ishadow.online/index_cn.html"
+private let urlPrefix = "http://abc.ishadow.online/"
+private let urlSting = urlPrefix + "index_cn.html"
+
+class Creater {
+    static let shared = Creater()
+    
+    final func makeLadder(completionHandler: @escaping ([Ladder], Error?) -> Void) {
+        let n = NetworkUtil.shared
+        n.start()
+        n.completionHandler = { (data, e) in
+            let s = String(data: data, encoding: String.Encoding.utf8)!
+            let list = s.getLadderTagList()
+            var ladders = [Ladder]()
+            for i in list {
+                let ipTag = i.getItem(type: RegularExpression.ipTag)
+                let portTag = i.getItem(type: RegularExpression.portTag)
+                let passwordTag = i.getItem(type: RegularExpression.passwordTag)
+                let encryptionTag = i.getItem(type: RegularExpression.encryptionTag)
+                let QRCodeTag = i.getItem(type: RegularExpression.QRCodeTag)
+                
+                let ip = ipTag.getItem(type: RegularExpression.ip)
+                let port = portTag.getItem(type: RegularExpression.port)
+                let password = passwordTag.getItem(type: RegularExpression.password)
+                let encryption = encryptionTag.substring(with: encryptionTag.index(encryptionTag.startIndex, offsetBy: 5)..<encryptionTag.index(encryptionTag.endIndex, offsetBy: -5))
+                let QRCode =   urlPrefix + QRCodeTag.getItem(type: RegularExpression.QRCode)
+                
+                let ladder = Ladder(ip: ip, port: port, password: password, encryption: encryption, QRCodeURL: QRCode)
+                ladders.append(ladder)
+                
+                completionHandler(ladders, e)
+            }
+        }
+    }
+}
+
 
 class NetworkUtil: NSObject {
     static let shared = NetworkUtil()
@@ -62,41 +96,6 @@ extension String {
 }
 
 
-
-class Creater {
-    static let shared = Creater()
-    
-    final func makeLadder(completionHandler: @escaping ([Ladder], Error?) -> Void) {
-        let n = NetworkUtil.shared
-        n.start()
-        n.completionHandler = { (data, e) in
-            let s = String(data: data, encoding: String.Encoding.utf8)!
-            let list = s.getLadderTagList()
-            var ladders = [Ladder]()
-            for i in list {
-                let ipTag = i.getItem(type: RegularExpression.ipTag)
-                let portTag = i.getItem(type: RegularExpression.portTag)
-                let passwordTag = i.getItem(type: RegularExpression.passwordTag)
-                let encryptTypeTag = i.getItem(type: RegularExpression.encryptTypeTag)
-                
-                let ip = ipTag.getItem(type: RegularExpression.ip)
-                let port = portTag.getItem(type: RegularExpression.port)
-                let password = passwordTag.getItem(type: RegularExpression.password)
-                
-                let encryptType = encryptTypeTag.substring(with: encryptTypeTag.index(encryptTypeTag.startIndex, offsetBy: 5)..<encryptTypeTag.index(encryptTypeTag.endIndex, offsetBy: -5))
-                
-                let ladder = Ladder(ip: ip, port: port, password: password, encryptType: encryptType)
-                ladders.append(ladder)
-                
-                completionHandler(ladders, e)
-            }
-        }
-
-    }
-    
-}
-
-
 struct Regex {
     static func makeRegularExpression(pattern: String) -> NSRegularExpression {
         var expression: NSRegularExpression!
@@ -113,12 +112,14 @@ enum RegularExpression: String {
     case listTag = "<div class=\"hover-bg\">(.*?)</div>"
     case ipTag = "IP地址:<span id=\"\\b(.*?)\">(.*?)</span>"
     case portTag = "<h4>端口：(\\d+?)</h4>"
-    case passwordTag = "密码:<span id=\"\\b(.*?)\">(\\d+)</span>"
-    case encryptTypeTag = "加密方式:(.*?)</h4>"
+    case passwordTag = "密码:<span id=\"\\b(.*?)\">(.*?)</span>"
+    case encryptionTag = "加密方式:(.*?)</h4>"
+    case QRCodeTag = "a href=\"(.*?)\""
     
     case ip = "\\w+\\W\\w+\\W\\w+"
     case port = "\\d{2,9}"
     case password = "\\d+"
+    case QRCode = "\\w{3}/\\w{2}/\\w{3,5}\\Wpng"
 }
 
 

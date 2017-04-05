@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D0A2DE51E938444003875A9 /* LadderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A2DE31E938444003875A9 /* LadderCell.swift */; };
+		4D0A2DE61E938444003875A9 /* LadderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D0A2DE41E938444003875A9 /* LadderCell.xib */; };
+		4D0A2DE81E93C1FD003875A9 /* MyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A2DE71E93C1FD003875A9 /* MyLabel.swift */; };
+		4D0A2DEC1E948DE2003875A9 /* ImageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0A2DEB1E948DE2003875A9 /* ImageUtil.swift */; };
 		4DD2ABC21E92093600F286DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD2ABC11E92093600F286DC /* AppDelegate.swift */; };
 		4DD2ABC41E92093600F286DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD2ABC31E92093600F286DC /* ViewController.swift */; };
 		4DD2ABC71E92093600F286DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DD2ABC51E92093600F286DC /* Main.storyboard */; };
@@ -18,6 +22,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D0A2DE31E938444003875A9 /* LadderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LadderCell.swift; sourceTree = "<group>"; };
+		4D0A2DE41E938444003875A9 /* LadderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LadderCell.xib; sourceTree = "<group>"; };
+		4D0A2DE71E93C1FD003875A9 /* MyLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLabel.swift; sourceTree = "<group>"; };
+		4D0A2DEB1E948DE2003875A9 /* ImageUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUtil.swift; sourceTree = "<group>"; };
 		4DD2ABBE1E92093600F286DC /* FreeSS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeSS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DD2ABC11E92093600F286DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DD2ABC31E92093600F286DC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,7 +74,11 @@
 				4DD2ABC31E92093600F286DC /* ViewController.swift */,
 				4DD2ABD31E920A4200F286DC /* Ladder.swift */,
 				4DD2ABD71E921E6600F286DC /* Util.swift */,
+				4D0A2DEB1E948DE2003875A9 /* ImageUtil.swift */,
 				4DD2ABC51E92093600F286DC /* Main.storyboard */,
+				4D0A2DE31E938444003875A9 /* LadderCell.swift */,
+				4D0A2DE41E938444003875A9 /* LadderCell.xib */,
+				4D0A2DE71E93C1FD003875A9 /* MyLabel.swift */,
 				4DD2ABC81E92093600F286DC /* Assets.xcassets */,
 				4DD2ABCA1E92093600F286DC /* LaunchScreen.storyboard */,
 				4DD2ABCD1E92093600F286DC /* Info.plist */,
@@ -145,6 +157,7 @@
 				4DD2ABCC1E92093600F286DC /* LaunchScreen.storyboard in Resources */,
 				4DD2ABC91E92093600F286DC /* Assets.xcassets in Resources */,
 				4DD2ABC71E92093600F286DC /* Main.storyboard in Resources */,
+				4D0A2DE61E938444003875A9 /* LadderCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,9 +169,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DD2ABC41E92093600F286DC /* ViewController.swift in Sources */,
+				4D0A2DEC1E948DE2003875A9 /* ImageUtil.swift in Sources */,
 				4DD2ABD81E921E6600F286DC /* Util.swift in Sources */,
+				4D0A2DE81E93C1FD003875A9 /* MyLabel.swift in Sources */,
 				4DD2ABD41E920A4200F286DC /* Ladder.swift in Sources */,
 				4DD2ABC21E92093600F286DC /* AppDelegate.swift in Sources */,
+				4D0A2DE51E938444003875A9 /* LadderCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,7 +299,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Y8ERZXHPMU;
 				INFOPLIST_FILE = FreeSS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.YogaXiong.FreeSS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -297,7 +313,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Y8ERZXHPMU;
 				INFOPLIST_FILE = FreeSS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.YogaXiong.FreeSS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -324,6 +340,7 @@
 				4DD2ABD21E92093600F286DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
