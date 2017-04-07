@@ -67,6 +67,7 @@ class MyLabel: UILabel {
     private func copyText() {
         let pasteboard = UIPasteboard.general
         pasteboard.string = pasteString
+        noticeOnStatusBar("已贴")
     }
     
     private func reset() {

@@ -19,24 +19,42 @@ class ViewController: UIViewController {
         configTableView()
         
         Creater.shared.makeLadder { [weak self] (ladders, error) in
-            self?.ladders = ladders
-            self?.tableView.reloadData()
+            if error != nil || ladders.isEmpty {
+                DispatchQueue.main.async {
+                    self?.noticeError("获取数据失败")
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self?.ladders = ladders
+                    self?.tableView.reloadData()
+                }
+            }
         }
     }
     
     private func configTableView() {
         tableView.register(UINib.init(nibName: "LadderCell", bundle: .main), forCellReuseIdentifier: cellId)
-        tableView.estimatedRowHeight = 80
+        tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
     }
     
     func saveQRCodeImage(url: String) {
-        weak var `self` = self
-        print(url)
+        ImageUtil.shared.downloadImage(url: URL(string: url)!, progressBlock: nil) { [weak self] (data, image, error, finished) in
+            guard let i = image else { return }
+            ImageUtil.shared.save(image: i) { (success, error) in
+                DispatchQueue.main.async {
+                    if error != nil {
+                        self?.noticeError("保存失败")
+                    } else {
+                        self?.noticeOnStatusBar("保存成功")
+                    }
+                }
+            }
+        }
     }
-
+    
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {

@@ -6,8 +6,7 @@
 //  Copyright © 2017年 YogaXiong. All rights reserved.
 //
 
-import UIKit
-//import NetworkExtension
+import Foundation
 
 struct Ladder: CustomStringConvertible {
     let ip: String
@@ -27,5 +26,4 @@ struct Ladder: CustomStringConvertible {
     var description: String {
         return "ip: \(ip)" + "\n" + "port: \(port)" + "\n" + "password: \(password)" + "\n" + "encryption: \(encryption)" + "\n" + "QRCodeURL: \(QRCodeURL)" + "\n"
     }
-    
 }

@@ -45,12 +45,9 @@ class LadderCell: UITableViewCell {
         return true
     }
     
-    
     func cilckMenuItem() {
         if let url = ladder?.QRCodeURL {
             menuItemHandler?(url)
         }
     }
-
-    
 }
