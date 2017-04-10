@@ -71,7 +71,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {
-        let i = UIMenuItem(title: "保存二维码图片", action: #selector(LadderCell.cilckMenuItem))
+        let i = UIMenuItem(title: "保存二维码", action: #selector(LadderCell.cilckMenuItem))
         UIMenuController.shared.menuItems = [i]
         UIMenuController.shared.update()
         return true

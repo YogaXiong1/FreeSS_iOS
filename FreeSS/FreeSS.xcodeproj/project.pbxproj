@@ -24,6 +24,7 @@
 		4DD2ABD41E920A4200F286DC /* Ladder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD2ABD31E920A4200F286DC /* Ladder.swift */; };
 		4DD2ABD81E921E6600F286DC /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD2ABD71E921E6600F286DC /* Util.swift */; };
 		4DD2ABDC1E92769800F286DC /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DD2ABDB1E92769800F286DC /* NetworkExtension.framework */; };
+		4DEEB5B81E97522700D0ED79 /* cell_bac.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEEB5B71E97522700D0ED79 /* cell_bac.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		4DD2ABD31E920A4200F286DC /* Ladder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ladder.swift; sourceTree = "<group>"; };
 		4DD2ABD71E921E6600F286DC /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		4DD2ABDB1E92769800F286DC /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		4DEEB5B71E97522700D0ED79 /* cell_bac.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cell_bac.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,15 +134,11 @@
 				4DD2ABC11E92093600F286DC /* AppDelegate.swift */,
 				4DD2ABC31E92093600F286DC /* ViewController.swift */,
 				4DD2ABD31E920A4200F286DC /* Ladder.swift */,
-				4DD2ABD71E921E6600F286DC /* Util.swift */,
-				4D0A2DEB1E948DE2003875A9 /* ImageUtil.swift */,
-				4DD2ABC51E92093600F286DC /* Main.storyboard */,
-				4D0A2DE31E938444003875A9 /* LadderCell.swift */,
-				4D0A2DE41E938444003875A9 /* LadderCell.xib */,
-				4D0A2DE71E93C1FD003875A9 /* MyLabel.swift */,
-				4D05F0B61E97239A0049AF85 /* MyNotice.swift */,
+				4DEEB5B91E978D2600D0ED79 /* UI */,
+				4DEEB5BA1E978D4D00D0ED79 /* Util */,
 				4DD2ABC81E92093600F286DC /* Assets.xcassets */,
 				4DD2ABCA1E92093600F286DC /* LaunchScreen.storyboard */,
+				4DEEB5B71E97522700D0ED79 /* cell_bac.png */,
 				4DD2ABCD1E92093600F286DC /* Info.plist */,
 			);
 			path = FreeSS;
@@ -153,6 +151,27 @@
 				4D2733D91E9663160002F083 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4DEEB5B91E978D2600D0ED79 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				4DD2ABC51E92093600F286DC /* Main.storyboard */,
+				4D0A2DE31E938444003875A9 /* LadderCell.swift */,
+				4D0A2DE41E938444003875A9 /* LadderCell.xib */,
+				4D0A2DE71E93C1FD003875A9 /* MyLabel.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		4DEEB5BA1E978D4D00D0ED79 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				4DD2ABD71E921E6600F286DC /* Util.swift */,
+				4D0A2DEB1E948DE2003875A9 /* ImageUtil.swift */,
+				4D05F0B61E97239A0049AF85 /* MyNotice.swift */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +277,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DEEB5B81E97522700D0ED79 /* cell_bac.png in Resources */,
 				4DD2ABCC1E92093600F286DC /* LaunchScreen.storyboard in Resources */,
 				4DD2ABC91E92093600F286DC /* Assets.xcassets in Resources */,
 				4DD2ABC71E92093600F286DC /* Main.storyboard in Resources */,
@@ -335,6 +355,7 @@
 				CODE_SIGN_ENTITLEMENTS = LadderWidget/LadderWidget.entitlements;
 				DEVELOPMENT_TEAM = Y8ERZXHPMU;
 				INFOPLIST_FILE = LadderWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.YogaXiong.FreeSS.LadderWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -349,6 +370,7 @@
 				CODE_SIGN_ENTITLEMENTS = LadderWidget/LadderWidget.entitlements;
 				DEVELOPMENT_TEAM = Y8ERZXHPMU;
 				INFOPLIST_FILE = LadderWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.YogaXiong.FreeSS.LadderWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";

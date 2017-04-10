@@ -199,7 +199,7 @@ fileprivate class MyNoticeSDK {
     class func draw(_ type: NoticeType) {
         let checkmarkShapePath = UIBezierPath()
         checkmarkShapePath.move(to: CGPoint(x: 36, y: 18))
-        checkmarkShapePath.addArc(withCenter: CGPoint(x: 18, y: 18), radius: 17.5, startAngle: 0, endAngle: CGFloat(M_PI*2), clockwise: true)
+        checkmarkShapePath.addArc(withCenter: CGPoint(x: 18, y: 18), radius: 17.5, startAngle: 0, endAngle: CGFloat(Double.pi*2), clockwise: true)
         checkmarkShapePath.close()
         switch type {
         case .success:
@@ -226,7 +226,7 @@ fileprivate class MyNoticeSDK {
             
             let checkmarkShapePath = UIBezierPath()
             checkmarkShapePath.move(to: CGPoint(x: 18, y: 27))
-            checkmarkShapePath.addArc(withCenter: CGPoint(x: 18, y: 27), radius: 1, startAngle: 0, endAngle: CGFloat(M_PI*2), clockwise: true)
+            checkmarkShapePath.addArc(withCenter: CGPoint(x: 18, y: 27), radius: 1, startAngle: 0, endAngle: CGFloat(Double.pi*2), clockwise: true)
             checkmarkShapePath.close()
             
             UIColor.white.setFill()
