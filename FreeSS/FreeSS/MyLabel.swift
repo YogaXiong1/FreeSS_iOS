@@ -11,7 +11,7 @@ import UIKit
 class MyLabel: UILabel {
     var pasteString: String?
     private lazy var menuController: UIMenuController =  UIMenuController.shared
-    private lazy var item = UIMenuItem(title: "copy", action: #selector(MyLabel.copyHandler))
+    private lazy var item = UIMenuItem(title: "复制", action: #selector(MyLabel.copyHandler))
 
     override var canBecomeFirstResponder: Bool {
         return true

@@ -36,9 +36,8 @@ class Creater {
                     
                     let ladder = Ladder(ip: ip, port: port, password: password, encryption: encryption, QRCodeURL: QRCode)
                     ladders.append(ladder)
-                    
-                    completionHandler(ladders, e)
                 }
+                completionHandler(ladders, e)
             }
         }
     }
@@ -52,8 +51,7 @@ class NetworkUtil: NSObject {
     
     final func start() {
         let url = URL(string: Config.urlString)!
-        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
-        request.timeoutInterval = 10
+        var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 6)
         request.allowsCellularAccess = true
         let session = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
         let task = session.dataTask(with: request)

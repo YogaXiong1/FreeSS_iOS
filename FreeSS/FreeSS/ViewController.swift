@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         Creater.shared.makeLadder { [weak self] (ladders, error) in
             if error != nil || ladders.isEmpty {
                 DispatchQueue.main.async {
-                    self?.noticeError("获取数据失败")
+                    self?.noticeError((error?.localizedDescription) ?? "获取数据失败")
                 }
             } else {
                 DispatchQueue.main.async {
@@ -67,7 +67,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         let ladder = ladders[indexPath.row]
         cell?.config(with: ladder)
         cell?.menuItemHandler = saveQRCodeImage
-        print(indexPath.row, ladder.toURL())
+//        print(indexPath.row, ladder.toURL())
         return cell!
     }
 
