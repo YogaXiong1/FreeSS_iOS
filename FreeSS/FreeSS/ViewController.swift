@@ -12,33 +12,51 @@ private let cellId = NSStringFromClass(LadderCell.self)
 
 class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    private let refreshControl = UIRefreshControl()
     var ladders = [Ladder]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configRefreshControl()
         configTableView()
-        
+        loadData()
+    }
+    
+    
+    func loadData() {
+        refreshControl.beginRefreshing()
         Creater.shared.makeLadder { [weak self] (ladders, error) in
-            if error != nil || ladders.isEmpty {
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                if error != nil || ladders.isEmpty {
                     self?.noticeError((error?.localizedDescription) ?? "获取数据失败")
-                }
-            } else {
-                DispatchQueue.main.async {
+                } else {
                     self?.ladders = ladders
                     self?.tableView.reloadData()
+                    self?.refreshControl.attributedTitle = NSAttributedString(string: Date.current(format: "HH:mm"))
                 }
+                self?.refreshControl.endRefreshing()
             }
         }
     }
     
     private func configTableView() {
-        tableView.register(UINib.init(nibName: "LadderCell", bundle: .main), forCellReuseIdentifier: cellId)
+        tableView.register(UINib(nibName: "LadderCell", bundle: .main), forCellReuseIdentifier: cellId)
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
+        
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
     }
+    
+    private func configRefreshControl() {
+        refreshControl.addTarget(self, action: #selector(ViewController.loadData), for: .valueChanged)
+    }
+    
     
     func saveQRCodeImage(url: String) {
         ImageUtil.shared.downloadImage(url: URL(string: url)!, progressBlock: nil) { [weak self] (data, image, error, finished) in
