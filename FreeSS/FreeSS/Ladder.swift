@@ -26,4 +26,11 @@ struct Ladder: CustomStringConvertible {
     var description: String {
         return "ip: \(ip)" + "\n" + "port: \(port)" + "\n" + "password: \(password)" + "\n" + "encryption: \(encryption)" + "\n" + "QRCodeURL: \(QRCodeURL)" + "\n"
     }
+    
+    func toURL() -> URL {
+        //        服务器:端口:协议:加密方式:混淆方式:base64（密码）？obfsparam= Base64(混淆参数)&remarks=Base64(备注)
+        let parts = "\(encryption):\(password)@\(ip):\(port)".base64(urlSafe: false)
+        return URL(string: "ss://\(parts)")!
+    }
+
 }

@@ -67,6 +67,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         let ladder = ladders[indexPath.row]
         cell?.config(with: ladder)
         cell?.menuItemHandler = saveQRCodeImage
+        print(indexPath.row, ladder.toURL())
         return cell!
     }
 

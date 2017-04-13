@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let urlString = "http://xyz.ishadow.online/"
+
 
 class Creater {
     static let shared = Creater()
@@ -32,7 +32,7 @@ class Creater {
                     let port = portTag.getItem(type: RegularExpression.port)
                     let password = passwordTag.getItem(type: RegularExpression.password)
                     let encryption = encryptionTag.substring(with: encryptionTag.index(encryptionTag.startIndex, offsetBy: 7)..<encryptionTag.index(encryptionTag.endIndex, offsetBy: -5))
-                    let QRCode = urlString + QRCodeTag.getItem(type: RegularExpression.QRCode)
+                    let QRCode = Config.urlString + QRCodeTag.getItem(type: RegularExpression.QRCode)
                     
                     let ladder = Ladder(ip: ip, port: port, password: password, encryption: encryption, QRCodeURL: QRCode)
                     ladders.append(ladder)
@@ -51,7 +51,7 @@ class NetworkUtil: NSObject {
     var completionHandler: ((Data, Error?) -> Void)?
     
     final func start() {
-        let url = URL(string: urlString)!
+        let url = URL(string: Config.urlString)!
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         request.timeoutInterval = 10
         request.allowsCellularAccess = true
@@ -101,6 +101,16 @@ extension String {
         }
         let s = (self as NSString).substring(with: result.range)
         return s
+    }
+    
+    func base64(urlSafe:Bool=true) -> String{
+        var encodeStr = self.data(using: String.Encoding.utf8)!.base64EncodedString(options: Data.Base64EncodingOptions())
+        if(urlSafe){
+            encodeStr = encodeStr.replacingOccurrences(of: "+", with: "-")
+            encodeStr = encodeStr.replacingOccurrences(of: "/", with: "_")
+            encodeStr = encodeStr.replacingOccurrences(of: "=", with: "")
+        }
+        return encodeStr
     }
 }
 
