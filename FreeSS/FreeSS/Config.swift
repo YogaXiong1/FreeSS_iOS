@@ -9,5 +9,6 @@
 import Foundation
 
 class Config {
-    static var urlString = "http://free.ishadow.online/"
+//    static var urlString = "http://free.ishadow.online/"
+    static var urlString = "http://isx.yt/"
 }
